@@ -1,7 +1,12 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
+exports.createPages = ({ actions: { createPage } }) => {
+  const projects = require("./src/data/projects.json")
+  projects.forEach(project => {
+    createPage({
+      path: `/work/${project.slug}`,
+      component: require.resolve("./src/templates/project_template.jsx"),
+      context: {
+        project,
+      },
+    })
+  })
+}
