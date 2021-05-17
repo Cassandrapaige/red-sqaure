@@ -1,15 +1,12 @@
-import React from "react"
+import * as React from "react"
+import Seo from "../components/seo"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import { useLocation } from "@reach/router"
 import styled from "styled-components"
 import ProjectHeader from "../components/project-header/project-header.component"
+import { Link } from "gatsby"
 
-const Project = () => {
-  const location = useLocation()
-  const params = location.pathname.split("/")
-  const path = params[params.length - 1]
-
+const WorkPage = () => {
   const data = useStaticQuery(graphql`
     query {
       allProjectsJson {
@@ -18,7 +15,7 @@ const Project = () => {
           slug
           main_img {
             childImageSharp {
-              fluid(maxWidth: 300) {
+              fluid(maxWidth: 2000, quality: 100) {
                 ...GatsbyImageSharpFluid
               }
             }
@@ -32,11 +29,14 @@ const Project = () => {
 
   return (
     <div>
-      {projects.map(
-        project => project.slug === path && <ProjectHeader project={project} />
-      )}
+      <Seo title="Work" />
+      {projects.map(project => (
+        <Link to={`/work/${project.slug}`} key={project.id}>
+          <ProjectHeader project={project} />
+        </Link>
+      ))}
     </div>
   )
 }
 
-export default Project
+export default WorkPage

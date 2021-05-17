@@ -31,7 +31,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/layout.js`),
+        component: require.resolve(
+          `./src/components/layout/layout.component.jsx`
+        ),
       },
     },
     `gatsby-transformer-json`,
