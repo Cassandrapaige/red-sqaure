@@ -69,7 +69,12 @@ function Seo({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap"
+        rel="stylesheet"
+      />
+    </Helmet>
   )
 }
 

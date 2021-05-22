@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { motion } from "framer-motion"
 
 export const StyledProjectContainer = styled(motion.article)`
-  margin: 3rem 0;
+  margin-bottom: 6rem;
   position: relative;
 `
 
@@ -17,9 +17,9 @@ export const StyledImageContainer = styled(motion.div)`
   }
 `
 
-export const StyledTitle = styled.h1`
+export const StyledTitle = styled(motion.h1)`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) !important;
 `

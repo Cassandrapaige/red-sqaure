@@ -1,42 +1,38 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
-import { useLocation } from "@reach/router"
-import styled from "styled-components"
 import ProjectHeader from "../components/project-header/project-header.component"
+import { motion } from "framer-motion"
 
-const Project = () => {
-  const location = useLocation()
-  const params = location.pathname.split("/")
-  const path = params[params.length - 1]
-
-  const data = useStaticQuery(graphql`
-    query {
-      allProjectsJson {
-        nodes {
-          title
-          slug
-          main_img {
-            childImageSharp {
-              fluid(maxWidth: 300) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const projects = data.allProjectsJson.nodes
+const Project = ({ data: { projectsJson: project }, pageContext }) => {
+  const {
+    slug,
+    next: { title: nextTitle, slug: nextSlug },
+  } = pageContext
 
   return (
-    <div>
-      {projects.map(
-        project => project.slug === path && <ProjectHeader project={project} />
-      )}
-    </div>
+    <motion.div>
+      <ProjectHeader project={project} key={project.id} />
+    </motion.div>
   )
 }
 
 export default Project
+
+export const query = graphql`
+  query GetAllProjects($slug: String!) {
+    projectsJson(slug: { eq: $slug }) {
+      title
+      slug
+      id
+      main_img {
+        childImageSharp {
+          gatsbyImageData(
+            layout: FULL_WIDTH
+            placeholder: BLURRED
+            formats: [AUTO, WEBP, AVIF]
+          )
+        }
+      }
+    }
+  }
+`

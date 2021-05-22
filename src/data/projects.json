@@ -3,24 +3,24 @@
     "title": "Flipboard",
     "slug": "flipboard",
     "id": 0,
-    "main_img": "../images/flipboard0.jpeg"
+    "main_img": "../images/flipboard/flipboard0.jpeg"
   },
   {
     "title": "Snickers",
     "slug": "snickers",
     "id": 1,
-    "main_img": "../images/snickers0.jpeg"
+    "main_img": "../images/snickers/snickers0.jpeg"
   },
   {
     "title": "Ripco Real Estate",
     "slug": "ripco",
     "id": 2,
-    "main_img": "../images/ripco0.jpeg"
+    "main_img": "../images/ripco/ripco0.jpeg"
   },
   {
     "title": "Kovitz",
     "slug": "kovitz",
     "id": 3,
-    "main_img": "../images/kovitz0.jpeg"
+    "main_img": "../images/kovitz/kovitz0.jpeg"
   }
 ]

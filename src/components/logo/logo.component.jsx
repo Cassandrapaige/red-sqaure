@@ -1,24 +1,23 @@
 import React from "react"
-
-import styled from "styled-components"
-import { motion } from "framer-motion"
+import { StlyedLogoContainer, StyledLogo } from "./logo.styles"
 
 const Logo = () => {
   const logoVariants = {
     hidden: {
       opacity: 0,
-      y: -50,
+      scale: 0,
     },
     show: {
       opacity: 1,
-      y: 0,
+      scale: 1,
       transition: {
         duration: 2,
       },
     },
   }
+
   return (
-    <StlyedLogoContainer>
+    <StlyedLogoContainer to="/">
       <StyledLogo
         variants={logoVariants}
         initial="hidden"
@@ -28,16 +27,5 @@ const Logo = () => {
     </StlyedLogoContainer>
   )
 }
-
-const StlyedLogoContainer = styled.div`
-  display: flex;
-`
-
-const StyledLogo = styled(motion.div)`
-  width: 30px;
-  height: 30px;
-  background: #e31e3c;
-  margin-right: 20px;
-`
 
 export default Logo
