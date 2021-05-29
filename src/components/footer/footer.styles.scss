@@ -1,5 +1,56 @@
+@import "../../styles/global.variables.scss";
+
 footer {
-  .title {
-    color: red;
+  border-top: 1px solid $contrast-color;
+  padding: 100px 0;
+  margin-top: 100px;
+
+  .contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+
+    &--email {
+      .title {
+        color: $text-color;
+        font-size: 3.5em;
+
+        a {
+          color: $accent-color;
+        }
+      }
+    }
+
+    &--info {
+      ul {
+        display: flex;
+        justify-content: end;
+
+        li {
+          margin: 0 1.1em;
+          font-size: 1.1em;
+          cursor: pointer;
+        }
+      }
+
+      .social-links {
+        margin-bottom: 1.7em;
+
+        li {
+          font-size: 1.3em;
+          transition: all 0.2s ease;
+
+          &:hover {
+            color: $contrast-color;
+          }
+        }
+      }
+
+      .locations {
+        li {
+          color: $contrast-color;
+        }
+      }
+    }
   }
 }

@@ -1,31 +1,11 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import "./project-header.styles.scss"
 import { motion } from "framer-motion"
+
+import "./project-header.styles.scss"
 
 const ProjectHeader = ({ isThumbnail, project }) => {
   // animations
-  const hoverAnimation = {
-    rest: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        duration: 0.2,
-        type: "tween",
-        ease: "easeIn",
-      },
-    },
-    hover: {
-      scale: 0.98,
-      opacity: 0.3,
-      transition: {
-        duration: 0.2,
-        type: "tween",
-        ease: "easeOut",
-      },
-    },
-  }
-
   const titleAnimation = {
     initial: {
       opacity: 0,
@@ -43,18 +23,15 @@ const ProjectHeader = ({ isThumbnail, project }) => {
 
   return (
     <article
-      className="project"
+      className="project full-bleed"
       initial="rest"
       whileHover="hover"
       animate="rest"
     >
-      <motion.div className="project--container">
-        <motion.div
-          className="project--image"
-          variants={isThumbnail && hoverAnimation}
-        >
+      <motion.div className="project--content">
+        <div className="project--image">
           <GatsbyImage image={image} alt={project.title} />
-        </motion.div>
+        </div>
         <h2
           className="project--title"
           variants={titleAnimation}

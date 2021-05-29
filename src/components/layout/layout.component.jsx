@@ -11,7 +11,7 @@ import "./layout.styles.scss"
 import Header from "../header/header.component"
 import Footer from "../footer/footer.component"
 
-const Layout = ({ children, ...rest }) => {
+const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -31,18 +31,14 @@ const Layout = ({ children, ...rest }) => {
     animate: {
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.8,
         when: "beforeChildren",
       },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration: 0.2 },
     },
   }
 
   return (
-    <div className="container">
+    <motion.div className="container">
       <Header siteTitle={data.site.siteMetadata.title || `Title`} />
       <motion.main
         key={pathname}
@@ -54,7 +50,7 @@ const Layout = ({ children, ...rest }) => {
         {children}
       </motion.main>
       <Footer />
-    </div>
+    </motion.div>
   )
 }
 

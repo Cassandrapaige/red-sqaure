@@ -26,7 +26,7 @@ const Logo = () => {
         initial="hidden"
         animate="show"
       ></motion.div>
-      <h1>Red Square</h1>
+      <h1>RedSquare</h1>
     </Link>
   )
 }

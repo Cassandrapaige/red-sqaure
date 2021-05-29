@@ -1,5 +1,13 @@
 .container {
   margin: 0 auto;
-  max-width: 1130px;
   padding: 1rem 2rem;
+  display: grid;
+  grid-template-columns:
+    1fr
+    min(109ch, 100%)
+    1fr;
+
+  & * {
+    grid-column: 2;
+  }
 }

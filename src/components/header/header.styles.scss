@@ -1,5 +1,7 @@
+@import "../../styles/global.variables.scss";
+
 header {
-  margin: 5rem 0 10rem 0;
+  margin: 5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,8 +20,8 @@ header {
   &--icon {
     width: 11px;
     height: 11px;
-    border-left: 1px solid #fefefe;
-    border-bottom: 1px solid #fefefe;
+    border-left: 1px solid $text-color;
+    border-bottom: 1px solid $text-color;
     margin-left: 8px;
   }
 }
