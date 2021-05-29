@@ -1,0 +1,22 @@
+.project {
+  margin-bottom: 6rem;
+  position: relative;
+
+  &--content {
+    font-size: calc(1em + 1vw);
+    text-transform: uppercase;
+  }
+
+  &--image {
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  &--title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+  }
+}

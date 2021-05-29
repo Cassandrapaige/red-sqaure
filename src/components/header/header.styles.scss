@@ -1,0 +1,25 @@
+header {
+  margin: 5rem 0 10rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+
+  &--link {
+    font-weight: 400;
+  }
+
+  &--icon {
+    width: 11px;
+    height: 11px;
+    border-left: 1px solid #fefefe;
+    border-bottom: 1px solid #fefefe;
+    margin-left: 8px;
+  }
+}

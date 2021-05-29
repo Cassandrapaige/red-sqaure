@@ -4,8 +4,12 @@ import { useStaticQuery, graphql } from "gatsby"
 import { motion } from "framer-motion"
 import { useLocation } from "@reach/router"
 
+//styles
+import "../../styles/global.styles.scss"
+import "./layout.styles.scss"
+
 import Header from "../header/header.component"
-import styled, { createGlobalStyle } from "styled-components"
+import Footer from "../footer/footer.component"
 
 const Layout = ({ children, ...rest }) => {
   const data = useStaticQuery(graphql`
@@ -38,8 +42,7 @@ const Layout = ({ children, ...rest }) => {
   }
 
   return (
-    <StyledContainer>
-      <GlobalStyle />
+    <div className="container">
       <Header siteTitle={data.site.siteMetadata.title || `Title`} />
       <motion.main
         key={pathname}
@@ -50,38 +53,10 @@ const Layout = ({ children, ...rest }) => {
       >
         {children}
       </motion.main>
-    </StyledContainer>
+      <Footer />
+    </div>
   )
 }
-
-// styles
-
-const StyledContainer = styled.section`
-  margin: 0 auto;
-  max-width: 1230px;
-  padding: 1rem 2rem;
-`
-
-// global styles
-
-const GlobalStyle = createGlobalStyle`
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-  }
-
-  body {
-      background: #111;
-      color: #fefefe;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-
-  a {
-    color: #fefefe;
-    text-decoration: none;
-  }
-  `
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

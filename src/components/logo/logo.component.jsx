@@ -1,5 +1,7 @@
 import React from "react"
-import { StlyedLogoContainer, StyledLogo } from "./logo.styles"
+import { Link } from "gatsby"
+import { motion } from "framer-motion"
+import "./logo.styles.scss"
 
 const Logo = () => {
   const logoVariants = {
@@ -17,14 +19,15 @@ const Logo = () => {
   }
 
   return (
-    <StlyedLogoContainer to="/">
-      <StyledLogo
+    <Link className="logo" to="/">
+      <motion.div
+        className="logo--image"
         variants={logoVariants}
         initial="hidden"
         animate="show"
-      ></StyledLogo>
+      ></motion.div>
       <h1>Red Square</h1>
-    </StlyedLogoContainer>
+    </Link>
   )
 }
 

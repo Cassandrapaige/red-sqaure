@@ -3,12 +3,7 @@ import PropTypes from "prop-types"
 import Logo from "../logo/logo.component"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
-
-import {
-  StyledHeader,
-  StyledArrowIcon,
-  StyledNavigationLink,
-} from "./header.styles"
+import "./header.styles.scss"
 
 const Header = () => {
   const navStyles = {
@@ -38,20 +33,23 @@ const Header = () => {
     },
   }
   return (
-    <StyledHeader>
+    <header>
       <Logo />
       <Link to="/work">
-        <StyledNavigationLink
+        <motion.div
+          className="navigation"
           variants={navStyles}
           initial="rest"
           animate="rest"
           whileHover="hover"
         >
-          <motion.h3 variants={itemStyles}>Work</motion.h3>
-          <StyledArrowIcon variants={arrowStyles} />
-        </StyledNavigationLink>
+          <motion.h3 variants={itemStyles} className="navigation--link">
+            Work
+          </motion.h3>
+          <motion.div variants={arrowStyles} className="navigation--icon" />
+        </motion.div>
       </Link>
-    </StyledHeader>
+    </header>
   )
 }
 

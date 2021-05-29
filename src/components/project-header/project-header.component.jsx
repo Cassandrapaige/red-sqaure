@@ -1,11 +1,7 @@
 import React from "react"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import {
-  StyledProjectContainer,
-  StyledProjectContent,
-  StyledTitle,
-  StyledImageContainer,
-} from "./project-header.styles"
+import "./project-header.styles.scss"
+import { motion } from "framer-motion"
 
 const ProjectHeader = ({ isThumbnail, project }) => {
   // animations
@@ -46,20 +42,29 @@ const ProjectHeader = ({ isThumbnail, project }) => {
   const image = getImage(project.main_img)
 
   return (
-    <StyledProjectContainer initial="rest" whileHover="hover" animate="rest">
-      <StyledProjectContent>
-        <StyledImageContainer variants={isThumbnail && hoverAnimation}>
+    <article
+      className="project"
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+    >
+      <motion.div className="project--container">
+        <motion.div
+          className="project--image"
+          variants={isThumbnail && hoverAnimation}
+        >
           <GatsbyImage image={image} alt={project.title} />
-        </StyledImageContainer>
-        <StyledTitle
+        </motion.div>
+        <h2
+          className="project--title"
           variants={titleAnimation}
           initial="initial"
           animate="animate"
         >
           {project.title}
-        </StyledTitle>
-      </StyledProjectContent>
-    </StyledProjectContainer>
+        </h2>
+      </motion.div>
+    </article>
   )
 }
 

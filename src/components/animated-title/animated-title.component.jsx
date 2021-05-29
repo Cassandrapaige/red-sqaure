@@ -1,14 +1,11 @@
 import React from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { StyledTitle } from "./animated-title.styles"
-import { useLocation } from "@reach/router"
+import { motion } from "framer-motion"
+import "./animated-title.styles.scss"
 
-const AnimatedTitle = ({ title }) => {
-  const { pathname } = useLocation()
-  const delay = 0.3,
-    wordLength = title.split(" ").length
+const AnimatedTitle = ({ title, wordLength }) => {
+  const delay = 0.3
 
-  const containerAnimations = {
+  const containerAnimation = {
     initial: {
       opacity: 0,
     },
@@ -16,18 +13,6 @@ const AnimatedTitle = ({ title }) => {
       opacity: 1,
       transition: {
         staggerChildren: delay,
-      },
-    },
-  }
-
-  const textAnimation = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
       },
     },
   }
@@ -44,22 +29,32 @@ const AnimatedTitle = ({ title }) => {
       },
     },
   }
+
+  const textAnimation = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+      },
+    },
+  }
+
   return (
-    <AnimatePresence exitBeforeEnter>
-      <motion.div variants={wrapperAnimation}>
-        <StyledTitle
-          variants={containerAnimations}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          key={pathname}
-        >
-          {title.split(" ").map(word => (
-            <motion.span variants={textAnimation}>{word}</motion.span>
-          ))}
-        </StyledTitle>
-      </motion.div>
-    </AnimatePresence>
+    <motion.div variants={wrapperAnimation}>
+      <motion.h2
+        className="animated-title"
+        variants={containerAnimation}
+        initial="initial"
+        animate="animate"
+      >
+        {title.split(" ").map(word => (
+          <motion.span variants={textAnimation}>{word}</motion.span>
+        ))}
+      </motion.h2>
+    </motion.div>
   )
 }
 

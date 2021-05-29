@@ -1,0 +1,14 @@
+@import "../../styles/global.variables.scss";
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &--image {
+    width: 30px;
+    height: 30px;
+    background: $accent-color;
+    margin-right: 20px;
+  }
+}
