@@ -1,0 +1,38 @@
+@import "./global.variables.scss";
+
+.about {
+  h3 {
+    font-size: 4em;
+    line-height: 80px;
+    padding: 50px 0;
+  }
+
+  p {
+    font-size: 2em;
+    line-height: 55px;
+  }
+}
+
+.clients {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-top: 0.2px solid $contrast-color;
+  padding: 100px 0;
+  margin: 50px 0;
+  gap: 100px;
+
+  &--title {
+    flex: 2;
+    font-size: 1em;
+    color: $contrast-color;
+    font-weight: 300;
+  }
+
+  &--list {
+    li {
+      font-size: 1.5em;
+      padding: 10px 0;
+    }
+  }
+}

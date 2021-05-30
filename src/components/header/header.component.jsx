@@ -14,6 +14,9 @@ const Header = () => {
       transition: {
         staggerChildren: 0.1,
         staggerDirection: -1,
+        type: "spring",
+        bounce: 0.25,
+        mass: 1,
       },
     },
   }

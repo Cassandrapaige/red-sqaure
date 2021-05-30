@@ -1,8 +1,11 @@
 .animated-title {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
-  font-size: 5em;
-  line-height: 90%;
+  font-size: 6.25vw;
+  line-height: 110%;
   font-family: "Merriweather", serif;
+  padding: 60px 0;
+
+  span {
+    position: relative;
+    margin-right: 0.22em;
+  }
 }

@@ -2,9 +2,7 @@ import React from "react"
 import { motion } from "framer-motion"
 import "./animated-title.styles.scss"
 
-const AnimatedTitle = ({ title, wordLength }) => {
-  const delay = 0.3
-
+const AnimatedTitle = ({ delay, title, wordLength }) => {
   const containerAnimation = {
     initial: {
       opacity: 0,
@@ -25,7 +23,10 @@ const AnimatedTitle = ({ title, wordLength }) => {
       y: 0,
       transition: {
         duration: 0.5,
-        delay: wordLength * delay,
+        delay: (wordLength - 1) * delay,
+        type: "spring",
+        bounce: 0.25,
+        mass: 0.25,
       },
     },
   }
@@ -50,8 +51,11 @@ const AnimatedTitle = ({ title, wordLength }) => {
         initial="initial"
         animate="animate"
       >
-        {title.split(" ").map(word => (
-          <motion.span variants={textAnimation}>{word}</motion.span>
+        {title.split(" ").map((word, index) => (
+          <>
+            <motion.span variants={textAnimation}>{word}</motion.span>
+            {(index + 1) % 3 === 0 && <br />}
+          </>
         ))}
       </motion.h2>
     </motion.div>
