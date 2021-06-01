@@ -1,6 +1,15 @@
 @import "./global.variables.scss";
 
+.tagline {
+  min-height: 40vh;
+  display: flex;
+  align-items: end;
+  padding: 50px 0;
+}
+
 .about {
+  padding: 50px 0;
+
   h3 {
     font-size: 4em;
     line-height: 80px;
@@ -17,22 +26,22 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  border-top: 0.2px solid $contrast-color;
+  border-top: 0.29px solid $border-color;
   padding: 100px 0;
-  margin: 50px 0;
   gap: 100px;
 
   &--title {
     flex: 2;
-    font-size: 1em;
+    font-size: 1.1em;
     color: $contrast-color;
-    font-weight: 300;
+    font-weight: 100;
   }
 
   &--list {
     li {
       font-size: 1.5em;
-      padding: 10px 0;
+      padding: 7px 0;
+      font-weight: 500;
     }
   }
 }

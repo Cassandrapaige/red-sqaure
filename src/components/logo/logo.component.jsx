@@ -11,9 +11,13 @@ const Logo = () => {
     },
     show: {
       opacity: 1,
-      scale: 1,
+      scale: [0, 1.1, 0.5, 1],
       transition: {
-        duration: 2,
+        duration: 1.5,
+        type: "spring",
+        mass: 2,
+        stiffness: 200,
+        times: [0, 0.6, 0.9, 1],
       },
     },
   }

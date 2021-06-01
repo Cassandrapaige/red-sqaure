@@ -4,8 +4,11 @@ import Logo from "../logo/logo.component"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 import "./header.styles.scss"
+import { useLocation } from "@reach/router"
 
 const Header = () => {
+  const { pathname } = useLocation()
+
   const navStyles = {
     rest: {
       opacity: 1,
@@ -38,7 +41,7 @@ const Header = () => {
   return (
     <header>
       <Logo />
-      <Link to="/work">
+      <Link to={pathname === "/" ? "/work" : "/"}>
         <motion.div
           className="navigation"
           variants={navStyles}
@@ -47,7 +50,7 @@ const Header = () => {
           whileHover="hover"
         >
           <motion.h3 variants={itemStyles} className="navigation--link">
-            Work
+            {pathname === "/" ? "Work" : "Red Square"}
           </motion.h3>
           <motion.div variants={arrowStyles} className="navigation--icon" />
         </motion.div>

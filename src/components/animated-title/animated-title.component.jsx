@@ -2,31 +2,19 @@ import React from "react"
 import { motion } from "framer-motion"
 import "./animated-title.styles.scss"
 
-const AnimatedTitle = ({ delay, title, wordLength }) => {
+const AnimatedTitle = ({ timing, title, wordLength }) => {
   const containerAnimation = {
-    initial: {
-      opacity: 0,
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-        staggerChildren: delay,
-      },
-    },
-  }
-
-  const wrapperAnimation = {
     initial: {
       y: 100,
     },
     animate: {
       y: 0,
       transition: {
-        duration: 0.5,
-        delay: (wordLength - 1) * delay,
+        staggerChildren: timing,
+        when: "afterChildren",
         type: "spring",
-        bounce: 0.25,
-        mass: 0.25,
+        mass: 1,
+        damping: 15,
       },
     },
   }
@@ -44,7 +32,7 @@ const AnimatedTitle = ({ delay, title, wordLength }) => {
   }
 
   return (
-    <motion.div variants={wrapperAnimation}>
+    <div>
       <motion.h2
         className="animated-title"
         variants={containerAnimation}
@@ -58,7 +46,7 @@ const AnimatedTitle = ({ delay, title, wordLength }) => {
           </>
         ))}
       </motion.h2>
-    </motion.div>
+    </div>
   )
 }
 

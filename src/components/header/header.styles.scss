@@ -15,13 +15,15 @@ header {
 
   &--link {
     font-weight: 400;
+    font-size: 1.25em;
+    line-height: 27px;
   }
 
   &--icon {
     width: 11px;
     height: 11px;
-    border-left: 1px solid $text-color;
-    border-bottom: 1px solid $text-color;
-    margin-left: 8px;
+    border-left: 2px solid $text-color;
+    border-bottom: 2px solid $text-color;
+    margin-left: 12px;
   }
 }

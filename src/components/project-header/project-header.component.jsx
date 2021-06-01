@@ -22,12 +22,7 @@ const ProjectHeader = ({ isThumbnail, project }) => {
   const image = getImage(project.main_img)
 
   return (
-    <article
-      className="project full-bleed"
-      initial="rest"
-      whileHover="hover"
-      animate="rest"
-    >
+    <article className="project">
       <motion.div className="project--content">
         <div className="project--image">
           <GatsbyImage image={image} alt={project.title} />

@@ -1,12 +1,13 @@
 @import "../../styles/global.variables.scss";
 
 footer {
-  border-top: 0.2px solid $contrast-color;
+  border-top: 0.2px solid $border-color;
   padding: 100px 0;
-  margin-top: 100px;
 
   .contact {
     display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
     justify-content: space-between;
     align-items: end;
 
@@ -14,6 +15,7 @@ footer {
       .title {
         color: $text-color;
         font-size: 3.5em;
+        line-height: 60px;
 
         a {
           color: $accent-color;

@@ -2,12 +2,10 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import ProjectHeader from "../components/project-header/project-header.component"
 import { motion } from "framer-motion"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Project = ({ data: { projectsJson: project }, pageContext }) => {
-  const {
-    slug,
-    next: { title: nextTitle, slug: nextSlug },
-  } = pageContext
+  const { slug, next } = pageContext
 
   return (
     <motion.div>
