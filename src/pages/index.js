@@ -86,7 +86,7 @@ const IndexPage = () => {
       y: 0,
       transition: {
         duration: 0.5,
-        delay: (wordLength - 1) * timing,
+        delay: timing,
         type: "spring",
         mass: 1,
         damping: 15,
@@ -95,58 +95,52 @@ const IndexPage = () => {
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <motion.div key={pathname}>
-        <Seo title="Home" />
-        <div className="tagline">
-          <AnimatedTitle
-            title={title}
-            wordLength={wordLength}
-            timing={timing}
-          />
-        </div>
-        <motion.div
-          className="image"
-          style={{
-            margin: `0px -100px`,
-          }}
-          variants={variants}
-        >
-          <StaticImage src="../images/flipboard/flipboard0.jpeg" alt="image" />
-        </motion.div>
-        <section className="about">
-          <AnimatedContainer>
-            <h3>
-              We deal in ideas, design and media that are category defying. When
-              the world Millis, you’ve got to Vanilli.
-            </h3>
-          </AnimatedContainer>
-          <AnimatedContainer>
-            <p>
-              Red Square believes in rigorous development of brand strategy and
-              whip-smart execution. We make all sorts of things. Things that
-              move markets, compel audiences and sell product. We help great
-              brands create what comes next.
-            </p>
-          </AnimatedContainer>
-        </section>
-
-        <section className="clients">
-          <div className="clients--title">
-            <h4>Select Clients</h4>
-          </div>
-          {Object.keys(CLIENT_DATA).map(key => (
-            <ul className="clients--list">
-              {CLIENT_DATA[key].map(client => (
-                <SlideContainer>
-                  <li>{client}</li>
-                </SlideContainer>
-              ))}
-            </ul>
-          ))}
-        </section>
+    <motion.div>
+      <Seo title="Home" />
+      <div className="tagline">
+        <AnimatedTitle title={title} wordLength={wordLength} timing={timing} />
+      </div>
+      <motion.div
+        className="image"
+        style={{
+          margin: `0px -100px`,
+        }}
+        variants={variants}
+      >
+        <StaticImage src="../images/flipboard/flipboard0.jpeg" alt="image" />
       </motion.div>
-    </AnimatePresence>
+      <section className="about">
+        <AnimatedContainer>
+          <h3>
+            We deal in ideas, design and media that are category defying. When
+            the world Millis, you’ve got to Vanilli.
+          </h3>
+        </AnimatedContainer>
+        <AnimatedContainer>
+          <p>
+            Red Square believes in rigorous development of brand strategy and
+            whip-smart execution. We make all sorts of things. Things that move
+            markets, compel audiences and sell product. We help great brands
+            create what comes next.
+          </p>
+        </AnimatedContainer>
+      </section>
+
+      <section className="clients">
+        <div className="clients--title">
+          <h4>Select Clients</h4>
+        </div>
+        {Object.keys(CLIENT_DATA).map(key => (
+          <ul className="clients--list">
+            {CLIENT_DATA[key].map(client => (
+              <SlideContainer>
+                <li>{client}</li>
+              </SlideContainer>
+            ))}
+          </ul>
+        ))}
+      </section>
+    </motion.div>
   )
 }
 

@@ -7,11 +7,7 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 const Project = ({ data: { projectsJson: project }, pageContext }) => {
   const { slug, next } = pageContext
 
-  return (
-    <motion.div>
-      <ProjectHeader project={project} key={project.id} />
-    </motion.div>
-  )
+  return <ProjectHeader project={project} key={project.id} />
 }
 
 export default Project

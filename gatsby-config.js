@@ -28,14 +28,14 @@ module.exports = {
         icon: `src/images/red-icon.png`,
       },
     },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(
-          `./src/components/layout/layout.component.jsx`
-        ),
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-layout`,
+    //   options: {
+    //     component: require.resolve(
+    //       `./src/components/layout/layout.component.jsx`
+    //     ),
+    //   },
+    // },
     `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,

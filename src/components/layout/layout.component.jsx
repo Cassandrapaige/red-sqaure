@@ -1,7 +1,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import { useLocation } from "@reach/router"
 
 //styles
@@ -24,15 +24,21 @@ const Layout = ({ children }) => {
 
   const { pathname } = useLocation()
 
-  const variants = {
+  const animations = {
     initial: {
       opacity: 0,
     },
     animate: {
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: 2,
         when: "beforeChildren",
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 1,
       },
     },
   }
@@ -40,15 +46,17 @@ const Layout = ({ children }) => {
   return (
     <motion.div className="container">
       <Header siteTitle={data.site.siteMetadata.title || `Title`} />
-      <motion.main
-        key={pathname}
-        variants={variants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-      >
-        {children}
-      </motion.main>
+      <AnimatePresence exitBeforeEnter>
+        <motion.main
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={animations}
+          key={pathname}
+        >
+          {children}
+        </motion.main>
+      </AnimatePresence>
       <Footer />
     </motion.div>
   )
