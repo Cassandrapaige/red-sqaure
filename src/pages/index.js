@@ -46,7 +46,7 @@ const SlideContainer = ({ children }) => {
   const slideInAnimation = {
     initial: {
       opacity: 0,
-      x: -20,
+      x: -30,
     },
     animate: {
       opacity: 1,
