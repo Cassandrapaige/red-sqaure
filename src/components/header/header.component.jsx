@@ -1,85 +1,23 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import Logo from "../logo/logo.component"
-import { motion, AnimatePresence } from "framer-motion"
-import { Link } from "gatsby"
-import "./header.styles.scss"
 import { useLocation } from "@reach/router"
+
+import NavLink from "../nav-link/nav-link.component"
+import "./header.styles.scss"
 
 const Header = () => {
   const { pathname } = useLocation()
 
-  const spring = {
-    type: "spring",
-    bounce: 0.25,
-    mass: 1,
-  }
-
-  const navStyles = {
-    initial: {
-      opacity: 0,
-      x: -20,
-    },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.5,
-        ...spring,
-      },
-    },
-    hover: {
-      transition: {
-        staggerChildren: 0.1,
-        staggerDirection: -1,
-        ...spring,
-      },
-    },
-    exit: {
-      opacity: 0,
-      x: 20,
-      transition: {
-        duration: 0.5,
-        ...spring,
-      },
-    },
-  }
-
-  const linkStyles = {
-    hover: {
-      x: 10,
-    },
-  }
-
-  const arrowStyles = {
-    initial: {
-      rotate: 225,
-    },
-    hover: {
-      x: 10,
-    },
-  }
   return (
     <header>
       <Logo />
-      <Link to={pathname === "/" ? "/work" : "/"}>
-        <AnimatePresence exitBeforeEnter>
-          <motion.div
-            className="navigation"
-            key={pathname}
-            variants={navStyles}
-            initial="initial"
-            animate="animate"
-            whileHover="hover"
-            exit="exit"
-          >
-            <motion.h3 variants={linkStyles} className="navigation--link">
-              {pathname === "/" ? "Work" : "Red Square"}
-            </motion.h3>
-            <motion.div variants={arrowStyles} className="navigation--icon" />
-          </motion.div>
-        </AnimatePresence>
-      </Link>
+      <NavLink
+        isAnimated
+        pathname={pathname}
+        link={pathname === "/" ? "/work" : "/"}
+        text={pathname === "/" ? "Work" : "Red Square"}
+      />
     </header>
   )
 }

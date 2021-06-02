@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import ProjectHeader from "../components/project-header/project-header.component"
 import { motion } from "framer-motion"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
