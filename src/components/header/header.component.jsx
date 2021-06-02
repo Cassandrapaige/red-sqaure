@@ -9,6 +9,12 @@ import { useLocation } from "@reach/router"
 const Header = () => {
   const { pathname } = useLocation()
 
+  const spring = {
+    type: "spring",
+    bounce: 0.25,
+    mass: 1,
+  }
+
   const navStyles = {
     initial: {
       opacity: 0,
@@ -19,18 +25,14 @@ const Header = () => {
       x: 0,
       transition: {
         duration: 0.5,
-        type: "spring",
-        bounce: 0.25,
-        mass: 1,
+        ...spring,
       },
     },
     hover: {
       transition: {
         staggerChildren: 0.1,
         staggerDirection: -1,
-        type: "spring",
-        bounce: 0.25,
-        mass: 1,
+        ...spring,
       },
     },
     exit: {
@@ -38,14 +40,12 @@ const Header = () => {
       x: 20,
       transition: {
         duration: 0.5,
-        type: "spring",
-        bounce: 0.25,
-        mass: 1,
+        ...spring,
       },
     },
   }
 
-  const itemStyles = {
+  const linkStyles = {
     hover: {
       x: 10,
     },
@@ -73,7 +73,7 @@ const Header = () => {
             whileHover="hover"
             exit="exit"
           >
-            <motion.h3 variants={itemStyles} className="navigation--link">
+            <motion.h3 variants={linkStyles} className="navigation--link">
               {pathname === "/" ? "Work" : "Red Square"}
             </motion.h3>
             <motion.div variants={arrowStyles} className="navigation--icon" />

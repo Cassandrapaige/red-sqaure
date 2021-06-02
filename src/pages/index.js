@@ -1,13 +1,13 @@
 import * as React from "react"
 import AnimatedTitle from "../components/animated-title/animated-title.component"
 import Seo from "../components/seo"
-import { motion, AnimatePresence } from "framer-motion"
-import { useLocation } from "@reach/router"
-import { StaticImage } from "gatsby-plugin-image"
+import { motion } from "framer-motion"
+import { useStaticQuery, graphql } from "gatsby"
 
 import useObserver from "../hooks/useObserver"
 
 import "../styles/index.styles.scss"
+import Carousel from "../components/carousel/carousel.component"
 
 const AnimatedContainer = ({ children }) => {
   const [isVisible, domRef] = useObserver()
@@ -74,7 +74,26 @@ const IndexPage = () => {
   const wordLength = title.split(" ").length
   const timing = 0.3
 
-  const { pathname } = useLocation()
+  const data = useStaticQuery(graphql`
+    query {
+      allProjectsJson {
+        nodes {
+          title
+          slug
+          id
+          main_img {
+            childImageSharp {
+              gatsbyImageData(
+                layout: FULL_WIDTH
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
+            }
+          }
+        }
+      }
+    }
+  `)
 
   const variants = {
     initial: {
@@ -107,7 +126,7 @@ const IndexPage = () => {
         }}
         variants={variants}
       >
-        <StaticImage src="../images/flipboard/flipboard0.jpeg" alt="image" />
+        <Carousel data={data.allProjectsJson.nodes} />
       </motion.div>
       <section className="about">
         <AnimatedContainer>
